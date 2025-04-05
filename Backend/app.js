@@ -18,7 +18,7 @@ app.use(
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true }));
-app.use('https://restaurant-frontend-6gql.onrender.com/reservation',reservationRouter);
+app.use('api/v1/reservation',reservationRouter);
 // /api/v1/reservation
 dbConnection();
 app.use(errorMiddleware);
