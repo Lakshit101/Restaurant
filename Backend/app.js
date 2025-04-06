@@ -4,24 +4,20 @@ import dotenv from "dotenv";
 import {dbConnection} from "./database/dbConnection.js";
 import {errorMiddleware} from "./error/error.js";
 import reservationRouter from "./routes/reservationRoute.js";
-const cors = require('cors');
+ 
 
 const app =express();
 
 dotenv.config({path:"./config/config.env"});
 
-app.use(cors({
-  origin: 'https://restaurant-frontend-6gql.onrender.com',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+ 
 
-// app.use(
-//     cors({
-//     origin: [process.env.FRONTEND_URL],  // Allows only the specified frontend URL
-//     methods: ["POST"],                   // Restricts allowed HTTP methods to POST only
-//     credentials: true                    // Allows cookies and credentials to be sent
-// }));
+app.use(
+    cors({
+    origin: [process.env.FRONTEND_URL],  // Allows only the specified frontend URL
+    methods: ["POST"],                   // Restricts allowed HTTP methods to POST only
+    credentials: true                    // Allows cookies and credentials to be sent
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true }));
