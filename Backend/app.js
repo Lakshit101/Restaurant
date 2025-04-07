@@ -12,13 +12,20 @@ const app =express();
 dotenv.config({path:"./config/config.env"});
 
  
+const cors = require('cors');
 
-app.use(
-    cors({
-    origin: [process.env.FRONTEND_URL],  // Allows only the specified frontend URL
-    methods: ["POST"],                   // Restricts allowed HTTP methods to POST only
-    credentials: true                    // Allows cookies and credentials to be sent
+app.use(cors({
+  origin: true,           // Automatically allows any origin
+  credentials: true,      // Allows cookies and Authorization headers
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Add any method you use
 }));
+
+// app.use(
+//     cors({
+//     origin: [process.env.FRONTEND_URL],  // Allows only the specified frontend URL
+//     methods: ["POST"],                   // Restricts allowed HTTP methods to POST only
+//     credentials: true                    // Allows cookies and credentials to be sent
+// }));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true }));
