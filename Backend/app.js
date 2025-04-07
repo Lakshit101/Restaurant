@@ -12,7 +12,7 @@ const app =express();
 dotenv.config({path:"./config/config.env"});
 
  
-const cors = require('cors');
+ 
 
 app.use(cors({
   origin: true,           // Automatically allows any origin
